@@ -17,7 +17,7 @@ internal sealed class PuzzleExecuter : Command
                 .Title("Select [green]puzzle day[/]?")
                 .PageSize(10)
                 .MoreChoicesText("[grey](Move up and down to reveal days)[/]")
-                .AddChoices(dayTypes.Select(t => t.Name)));
+                .AddChoices(dayTypes.Select(t => t.Name).OrderByDescending(o => o)));
 
         var selectedType = assembly.GetType(dayStr);
         if (Activator.CreateInstance(selectedType) is PuzzleDay day)
